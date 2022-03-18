@@ -1,0 +1,30 @@
+﻿We found in our daily catchup with Paul that there was a confusion in regards to the type of task that 
+he had to do , I'll reference the issue down bellow. 
+
+TLDR: The same way an animator could get a layout_revision or animation task or matchmove it would be 
+useful for TD to have predefined types of task so they can know right away what they need to do instead 
+of doing a meeting to clarify , these could all follow the same template and we can predict/autmate them 
+just as we would something that came from production.  
+
+
+Investigation 
+	Purpose: To get all the information we need to start a Design task 
+	subtask : 
+		1) Meeting with client
+		2) Creating User story 
+		3) Setting priority of the issue
+		4) Compiling all the initial required elements (test files) 
+
+Design
+	Purpose: To prepair the Development epic 
+		1)Design the Feature/Tool  
+		2)Create epic for the Development | Break down task  into issues
+		3)Create Issues
+		4)Assign Issues
+		5)Answer question in regards to  the design 
+
+Development
+	Purpose: The development task is part of the development epic and executes  a  component of the 
+epic 
+
+		1) 
