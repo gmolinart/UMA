@@ -1,0 +1,25 @@
+{
+    "methodology": "local",
+    "my_tasks": {},
+    "paths": {
+        "ari_convert": "arc_cmd",
+        "code_root": "C:\\\\Users\\tmiko\\PycharmProjects\\cglumberjack",
+        "convert": "C:\\\\Program Files\\ImageMagick-7.0.10-Q16\\magick.exe",
+        "deadline": "",
+        "ffmpeg": "C:\\ProgramData\\chocolatey\\lib\\ffmpeg\\tools\\ffmpeg\\bin\\ffmpeg.exe",
+        "ffplay": "C:\\ProgramData\\chocolatey\\lib\\ffmpeg\\tools\\ffmpeg\\bin\\ffplay.exe",
+        "ffprobe": "C:\\ProgramData\\chocolatey\\lib\\ffmpeg\\tools\\ffmpeg\\bin\\ffprobe.exe",
+        "magick": "C:\\\\Program Files\\ImageMagick-7.0.10-Q16\\magick.exe",
+        "maketx": "",
+        "mayapy": "C:\\\\Program Files\\Autodesk\\Maya2020\\bin\\mayapy.exe",
+        "nuke": "",
+        "oiiotool": "",
+        "root": "C:\\CGLUMBERJACK\\COMPANIES",
+        "smedge": "C:\\\\Program Files\\Smedge\\Submit.exe",
+        "wget": ""
+    },
+    "previous_path": "",
+    "previous_paths": {},
+    "sync_thing_config_modified": 1611447711.5722704,
+    "sync_thing_machine_type": "remote workstation"
+}
