@@ -1,0 +1,10 @@
+sg = "connection to sg" 
+_query = sg.find_one(
+    'Shot',
+    [['project.Project.tank_name', 'is', 'marz_ocra'], ['code', 'is', '0010_0020'], ['sg_sequence.Sequence.code', 'is', seq_code],
+    ['code', 'id', 'sg_plate_rez_height', 'sg_plate_rez_width', 'sg_start_frame', 'sg_end_frame']
+)
+height = _query.get('sg_plate_rez_height')
+width = _query.get('sg_plate_rez_width')
+first_frame = _query.get('sg_start_frame')
+last_frame = _query.get('sg_end_frame') 
