@@ -136,3 +136,119 @@ class Ui_ModelRenamer(object):
         self.mtl_lb.setText(_translate("ModelRenamer", "Mtl Group"))
         self.resolution_lb.setText(_translate("ModelRenamer", "Resolution"))
         self.geo_lb.setText(_translate("ModelRenamer", "Geo Type"))
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+####################################################        
+ # TODO: import current Qt staff
+import sys
+
+from cgl.plugins.Qt import QtCore, QtGui, QtWidgets
+
+# import maya.cmds as cmds
+#
+# top_nodes = cmds.ls(assemblies=True, long=True)
+# cameras = ['|persp', '|top', '|front', '|side']
+# top_nodes = [node for node in top_nodes if node not in cameras]
+#
+#
+# def hierarch_to_dict(top_nodes):
+#     dict = {}
+#     for node_name in top_nodes:
+#         dict[node_name] = {}
+#         children = cmds.listRelatives(node_name, children=True, fullPath=True)
+#         if children:
+#             print('we found nodes and children {0}-->{1}'.format(node_name, children))
+#             dict.update({str(node_name): hierarch_to_dict(children)})
+#         else:
+#             dict
+#
+#     return dict
+
+
+# nodes_data = hierarch_to_dict(top_nodes)
+
+test_data = {'|high': {'|high|plastic_mtl': {}},
+             '|mdl': {'|mdl|high': {'|mdl|high|metal_mtl': {
+                 '|mdl|high|metal_mtl|hatchet_blade': {'|mdl|high|metal_mtl|hatchet_blade|hatchet_bladeShape': {}},
+                 '|mdl|high|metal_mtl|hatchet_handle': {'|mdl|high|metal_mtl|hatchet_handle|hatchet_handleShape': {}}},
+                 '|mdl|high|null1': {},
+                 '|mdl|high|wood_mtl': {'|mdl|high|wood_mtl|hatchet_handle': {
+                     '|mdl|high|wood_mtl|hatchet_handle|hatchet_handleShape': {}},
+                     '|mdl|high|wood_mtl|hatchet_top': {
+                         '|mdl|high|wood_mtl|hatchet_top|hatchet_topShape': {}}}}}}
+
+
+class ModelRenamer(QtWidgets.QMainWindow):
+
+    def __init__(self, parent=None):
+        super(ModelRenamer, self).__init__()
+
+        self.main_widget = QtWidgets.QWidget(self)
+        self.setCentralWidget(self.main_widget)
+
+        self.main_layout = QtWidgets.QVBoxLayout()
+
+        self.tree_widget = TreeWidget(node_names=test_data, parent=self)
+        self.main_layout.addWidget(self.tree_widget)
+
+        self.main_widget.setLayout(self.main_layout)
+
+
+# TODO: tree widget
+# TODO: fill the widget with any hierarchy from maya
+class TreeWidget(QtWidgets.QTreeWidget):
+    item_clicked = QtCore.Signal()
+
+    def __init__(self, node_names=None, parent=None):
+        super(TreeWidget, self).__init__()
+        self.widgets_nodes = {}
+        self.setColumnCount(1)
+
+        self.item_data = node_names
+        for key in self.item_data.keys():
+            widget = QtWidgets.QTreeWidgetItem(self, [key.split('|')[-1]])
+            self.add_tw_item(widget, self.item_data.get(key))
+            self.widgets_nodes.update({widget: key})
+
+        self.itemClicked.connect(self.restore_path)
+
+    def add_tw_item(self, parent, dict_piece):
+        if dict_piece:
+            for key in dict_piece.keys():
+                widget = QtWidgets.QTreeWidgetItem([key.split('|')[-1]])
+                parent.addChild(widget)
+                self.widgets_nodes.update({widget: key})
+                self.add_tw_item(widget, dict_piece.get(key))
+
+    @staticmethod
+    def restore_path(widget, col):
+        name = '|' + widget.text(col)
+        while widget:
+            parent = widget.parent()
+            if parent:
+                parent_name = parent.text(col)
+                name = '|' + parent_name + name
+            widget = parent
+        print('full name of the clicked widget is {}'.format(name))
+        return name
+
+
+# TODO: implDO: right widget with advanced comboboxesement rules through regexes(Guillermo)
+# TODO: combine two widgets in one window
+# TODO: make the tree widget values red if don't pass checks
+# TODO: integrate widgets into the currect package
+
+if __name__ == '__main__':
+    app = QtWidgets.QApplication([])
+    window = ModelRenamer(parent=None)
+    window.show()
+    app.exec_()
