@@ -1,0 +1,50 @@
+
+from PySide2 import QtCore, QtGui, QtWidgets
+
+
+class Ui_Initialize(object):
+    def setupUi(self, Initialize):
+        Initialize.setObjectName("Initialize")
+        Initialize.resize(800, 600)
+        self.centralwidget = QtWidgets.QWidget(Initialize)
+        self.centralwidget.setObjectName("centralwidget")
+        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName("gridLayout")
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem, 0, 0, 1, 1)
+        self.grid_layout = QtWidgets.QGridLayout()
+        self.grid_layout.setObjectName("grid_layout")
+        self.mdl_lb = QtWidgets.QLabel(self.centralwidget)
+        self.mdl_lb.setObjectName("mdl_lb")
+        self.grid_layout.addWidget(self.mdl_lb, 1, 0, 1, 1)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.grid_layout.addItem(spacerItem1, 4, 0, 1, 1)
+        self.res_lb = QtWidgets.QLabel(self.centralwidget)
+        self.res_lb.setObjectName("res_lb")
+        self.grid_layout.addWidget(self.res_lb, 2, 0, 1, 1)
+        self.initialize_btn = QtWidgets.QPushButton(self.centralwidget)
+        self.initialize_btn.setObjectName("initialize_btn")
+        self.grid_layout.addWidget(self.initialize_btn, 3, 0, 1, 1)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.grid_layout.addItem(spacerItem2, 0, 0, 1, 1)
+        self.gridLayout.addLayout(self.grid_layout, 0, 1, 1, 1)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem3, 0, 2, 1, 1)
+        Initialize.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(Initialize)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 24))
+        self.menubar.setObjectName("menubar")
+        Initialize.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(Initialize)
+        self.statusbar.setObjectName("statusbar")
+        Initialize.setStatusBar(self.statusbar)
+
+        self.retranslateUi(Initialize)
+        QtCore.QMetaObject.connectSlotsByName(Initialize)
+
+    def retranslateUi(self, Initialize):
+        _translate = QtCore.QCoreApplication.translate
+        Initialize.setWindowTitle(_translate("Initialize", "Model "))
+        self.mdl_lb.setText(_translate("Initialize", "No \"mdl\" top node"))
+        self.res_lb.setText(_translate("Initialize", "No \"high\" resolution"))
+        self.initialize_btn.setText(_translate("Initialize", "Initialize Model "))
