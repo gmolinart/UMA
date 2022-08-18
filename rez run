@@ -1,0 +1,4 @@
+Z:/rez_booter/bin/rez-dev --feature gmolina_houdini_turntable --create --rez-pkgs alchemy,houdini-19.0.455,redshift --src-roots C:\users\gmolina\PycharmProjects\cglumberjack
+
+
+Z:/rez_booter/bin/rez-dev --use --feature gmolina_houdini_turntable
